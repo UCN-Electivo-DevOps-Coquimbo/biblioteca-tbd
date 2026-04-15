@@ -1,6 +1,14 @@
-{
-  "id": 1,
-  "name": "Sala 101",
-  "capacity": 6,
-  "available": true
-}
+[
+  {
+    "id": 1,
+    "name": "Sala 101",
+    "capacity": 6,
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "Sala 102",
+    "capacity": 8,
+    "available": true
+  }
+]
