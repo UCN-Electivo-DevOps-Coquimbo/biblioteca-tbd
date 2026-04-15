@@ -1,3 +1,4 @@
+from operator import ne
 import json
 
 
@@ -30,3 +31,17 @@ def add_study_room(file_path, new_room):
         json.dump(rooms, file, indent=2, ensure_ascii=False)
 
     return new_room
+
+print("¿Qué sala de estudio deseas agregar?")
+new_room = {
+    "id": int(input("Ingrese el ID de la sala: ")),
+    "name": input("Ingrese el nombre de la sala: "),
+    "capacity": int(input("Ingrese la capacidad de la sala: "))
+}
+
+result = add_study_room('study_rooms.json', new_room)
+if "error" in result:
+    print(f"Error: {result['error']}")
+else:
+    print("Sala de estudio agregada exitosamente.")
+    
