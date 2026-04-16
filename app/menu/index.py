@@ -1,3 +1,4 @@
+from services.get_book import solicitar_prestamo_libro
 
 opciones_alumno = ["1", "2", "3", "4", "5"]
 opciones_admin = ["1", "2", "3", "4", "5"]
@@ -13,8 +14,8 @@ def menu(userType = "alumno"):
         opcion = input("> ")
         if(userType == "alumno"):
             if(opcion == "1"):
-                print("Prestamo libro")
-                # aqui iria el codigo para prestar un libro, pero por ahora solo es un mensaje
+                solicitar_prestamo_libro()
+
             elif(opcion == "2"):
                 print("Pedir sala de estudio")
                 # aqui iria el codigo para pedir una sala de estudio, pero por ahora solo es un mensaje
