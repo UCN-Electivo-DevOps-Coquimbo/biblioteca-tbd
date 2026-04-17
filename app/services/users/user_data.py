@@ -2,7 +2,7 @@ from entities.libro import Libro
 
 usuarios = [
     {
-        "nombre": "Ana García",
+        "nombre": "Ana Garcia",
         "rol": "admin",
         "password": "hashed_password_123",
         "lecturas": [
@@ -11,7 +11,7 @@ usuarios = [
         ]
     },
     {
-        "nombre": "Roberto Martínez",
+        "nombre": "Roberto Martinez",
         "rol": "alumno",
         "password": "secure_pass_456",
         "lecturas": [
@@ -19,7 +19,7 @@ usuarios = [
         ]
     },
     {
-        "nombre": "Lucía Torres",
+        "nombre": "Lucia Torres",
         "rol": "alumno",
         "password": "mypassword789",
         "lecturas": []
