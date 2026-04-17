@@ -12,7 +12,7 @@ usuarios = [
     },
     {
         "nombre": "Roberto Martínez",
-        "rol": "lector",
+        "rol": "alumno",
         "password": "secure_pass_456",
         "lecturas": [
             Libro("Fundación", "Isaac Asimov", "Gnome Press", 1951, "Ciencia Ficción", True)
@@ -20,7 +20,7 @@ usuarios = [
     },
     {
         "nombre": "Lucía Torres",
-        "rol": "lector",
+        "rol": "alumno",
         "password": "mypassword789",
         "lecturas": []
     }
