@@ -4,6 +4,7 @@ from user_data import usuarios
 def crear_usuario(rol_creador, nombre, rol, contraseña, list_lecturas):
     if rol_creador != "admin":
         print("Solo los administradores pueden crear usuarios.")
+        return
     
     nuevo_usuario = Usuario(nombre, rol, contraseña, list_lecturas)
     usuarios.append({
@@ -14,3 +15,4 @@ def crear_usuario(rol_creador, nombre, rol, contraseña, list_lecturas):
     })
 
     print("El usuario se ha creado exitosamente.")
+    return
