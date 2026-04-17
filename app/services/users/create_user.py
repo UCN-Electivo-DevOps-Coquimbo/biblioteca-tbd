@@ -13,4 +13,4 @@ def crear_usuario(rol_creador, nombre, rol, contraseña, list_lecturas):
         "lecturas": nuevo_usuario.lecturas
     })
 
-    print("El usuario se ha creado exitosamente")
+    print("El usuario se ha creado exitosamente.")
