@@ -1,3 +1,5 @@
+from entities.libro import Libro 
+
 usuarios = [
     {
         "nombre": "Ana García",
@@ -20,6 +22,6 @@ usuarios = [
         "nombre": "Lucía Torres",
         "rol": "lector",
         "password": "mypassword789",
-        "lecturas": [] # Usuario sin lecturas actuales
+        "lecturas": []
     }
 ]
