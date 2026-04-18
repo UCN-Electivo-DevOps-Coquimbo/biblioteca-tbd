@@ -1,4 +1,5 @@
 from services.get_book import solicitar_prestamo_libro
+from services.manage_books import manage_books
 
 student_options = ["1", "2", "3", "4", "5"]
 admin_options = ["1", "2", "3", "4", "5"]
@@ -32,8 +33,7 @@ def menu(userType = "student"):
                 print("Opcion no valida, por favor ingrese una opcion valida")
         else:
             if(option == "1"):
-                print("Gestionar Libros")
-                # aqui iria el codigo para gestionar los libros, pero por ahora solo es un mensaje
+                manage_books()
             elif(option == "2"):
                 print("Gestionar Salas de estudio")
                 # aqui iria el codigo para gestionar las salas de estudio, pero por ahora solo es un mensaje
