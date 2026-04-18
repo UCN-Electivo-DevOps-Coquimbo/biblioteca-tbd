@@ -9,56 +9,56 @@ def _load_users():
         return json.load(f)
 
 
-def _save_users(datos):
+def _save_users(data):
     with open(DATA_PATH, "w", encoding="utf-8") as f:
-        json.dump(datos, f, indent=2, ensure_ascii=False)
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
 
 def login():
-    print("\n--- Iniciar Sesión ---")
+    print("\n--- Log in ---")
     email = input("Email: ").strip()
-    password = input("Contraseña: ").strip()
+    password = input("Password: ").strip()
 
-    datos = _load_users()
-    for usuario in datos["users"]:
-        if usuario["email"] == email and usuario["password"] == password:
-            print(f"\nBienvenido, {usuario['nombre']} ({usuario['rol']})")
-            return usuario  
+    data = _load_users()
+    for user in data["users"]:
+        if user["email"] == email and user["password"] == password:
+            print(f"\Welcome, {user['name']} ({user['rol']})")
+            return user  
 
-    print("\nEmail o contraseña incorrectos.")
+    print("\nEmail or password wrong.")
     return None
 
 
 def register():
-    print("\n--- Registrar Usuario ---")
-    nombre = input("Nombre completo: ").strip()
-    rol = input("Ingrese rol (estudiante/bibliotecario): ").strip()
-    email = nombre
-    if rol == "estudiante":
+    print("\n--- Register User ---")
+    name = input("Full name: ").strip()
+    rol = input("Input rol (student/library servant): ").strip()
+    email = name
+    if rol == "student":
         email += "@alumnos.ucn.cl"
     else:
         email += "@ucn.cl"
 
-    password = input("Contraseña: ").strip()
+    password = input("Password: ").strip()
 
-    datos = _load_users()
+    data = _load_users()
 
-    for usuario in datos["users"]:
-        if usuario["email"] == email:
-            print("\nEse email ya está registrado.")
+    for user in data["users"]:
+        if user["email"] == email:
+            print("\nThis email address already exist.")
             return None
 
-    nuevo_id = max(u["id"] for u in datos["users"]) + 1
-    nuevo_usuario = {
-        "id": nuevo_id,
-        "nombre": nombre,
+    new_id = max(u["id"] for u in data["users"]) + 1
+    new_user = {
+        "id": new_id,
+        "name": name,
         "email": email,
         "password": password,
         "rol": rol
     }
 
-    datos["users"].append(nuevo_usuario)
-    _save_users(datos)
+    data["users"].append(new_user)
+    _save_users(data)
 
-    print(f"\nUsuario '{nombre}' registrado exitosamente.")
-    return nuevo_usuario
+    print(f"\nUser '{name}' successful register.")
+    return new_user
