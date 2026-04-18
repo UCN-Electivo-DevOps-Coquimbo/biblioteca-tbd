@@ -4,7 +4,7 @@ import utils as biblioteca_utils
 
 def main():
     option = ""
-    while(not biblioteca_utils.itsOption(option, ["1", "2"], int)):
+    while(not biblioteca_utils.itsOption(option, ["1", "2", "3"], int)):
         print("=== Library UCN ===")
         print("1) Log in")      
         print("2) Register")

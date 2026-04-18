@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "editorial": "Sudamericana",
+    "year": 1967,
+    "genre": "Novela",
+    "total_copies": 3,
+    "available_copies": 3
+  },
+  {
+    "id": 2,
+    "title": "El Quijote",
+    "author": "Miguel de Cervantes",
+    "editorial": "Francisco de Robles",
+    "year": 1605,
+    "genre": "Novela",
+    "total_copies": 2,
+    "available_copies": 2
+  },
+  {
+    "id": 3,
+    "title": "Rayuela",
+    "author": "Julio Cortázar",
+    "editorial": "Sudamericana",
+    "year": 1963,
+    "genre": "Novela",
+    "total_copies": 1,
+    "available_copies": 1
+  },
+  {
+    "id": 4,
+    "title": "La vida es un sueño",
+    "author": "Nicolás Rojas",
+    "editorial": "Zig Zag",
+    "year": 1980,
+    "genre": "Teatro",
+    "total_copies": 1,
+    "available_copies": 1
+  }
+]
