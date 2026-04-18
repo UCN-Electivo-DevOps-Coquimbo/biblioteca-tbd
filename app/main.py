@@ -1,4 +1,6 @@
 from auth import login, register
+import menu.index as menu_index
+import utils as biblioteca_utils
 
 def main():
     print("Base biblioteca UCN")
@@ -27,3 +29,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+

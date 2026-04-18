@@ -4,12 +4,12 @@ import os
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "users.json")
 
 
-def _cargar_usuarios():
+def _load_users():
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def _guardar_usuarios(datos):
+def _save_users(datos):
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(datos, f, indent=2, ensure_ascii=False)
 
@@ -19,11 +19,11 @@ def login():
     email = input("Email: ").strip()
     password = input("Contraseña: ").strip()
 
-    datos = _cargar_usuarios()
+    datos = _load_users()
     for usuario in datos["users"]:
         if usuario["email"] == email and usuario["password"] == password:
             print(f"\nBienvenido, {usuario['nombre']} ({usuario['rol']})")
-            return usuario
+            return usuario  
 
     print("\nEmail o contraseña incorrectos.")
     return None
@@ -41,7 +41,7 @@ def register():
 
     password = input("Contraseña: ").strip()
 
-    datos = _cargar_usuarios()
+    datos = _load_users()
 
     for usuario in datos["users"]:
         if usuario["email"] == email:
@@ -58,7 +58,7 @@ def register():
     }
 
     datos["users"].append(nuevo_usuario)
-    _guardar_usuarios(datos)
+    _save_users(datos)
 
     print(f"\nUsuario '{nombre}' registrado exitosamente.")
     return nuevo_usuario
