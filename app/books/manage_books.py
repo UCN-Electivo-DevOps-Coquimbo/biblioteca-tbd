@@ -1,7 +1,7 @@
 import json
 import os
 
-DATA_PATH = os.path.join(os.path.dirname(__file__), "../../data/libros.json")
+DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "libros.json")
 
 def get_books():
     with open(DATA_PATH, "r", encoding="utf-8") as f:
@@ -45,7 +45,7 @@ def list_books():
         return
     print("\nLibros disponibles")
     for b in books:
-        print(f"[{b['id']}] {b['title']} - {b['author']} ({b['year']}) - Copias: {b['available_copies']}/{b['total_copies']}")
+        print(f"[{b['id']}] Título: {b['title']}, Autor: {b['author']}, Editorial: {b['editorial']}, Año: {b['year']}, Género: {b['genre']}, Copias Totales: {b['total_copies']}, Copias Disponibles: {b['available_copies']}")
 
 def manage_books():
     while True:

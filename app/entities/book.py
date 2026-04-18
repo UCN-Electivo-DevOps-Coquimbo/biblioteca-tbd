@@ -1,4 +1,4 @@
-class Libro:
+class Book:
     def __init__(self, id, title, author, editorial, year, genre, total_copies, available_copies):
         self.id = id
         self.title = title
@@ -20,7 +20,3 @@ class Libro:
             "total_copies": self.total_copies,
             "available_copies": self.available_copies
         }
-
-    def __str__(self):
-        return (f"[{self.id}] {self.title} - {self.author} ({self.year}) - "
-                f"Available: {self.available_copies}/{self.total_copies}")
