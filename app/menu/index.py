@@ -1,5 +1,6 @@
 from services.get_book import solicitar_prestamo_libro
 from books.manage_books import manage_books
+from loans.view_loans_user import view_my_loans
 
 student_options = ["1", "2", "3", "4", "5"]
 admin_options = ["1", "2", "3", "4", "5"]
@@ -21,8 +22,7 @@ def menu(userType = "student"):
                 print("Pedir sala de estudio")
                 # aqui iria el codigo para pedir una sala de estudio, pero por ahora solo es un mensaje
             elif(option == "3"):
-                print("Ver prestamos")
-                # aqui iria el codigo para ver los prestamos, pero por ahora solo es un mensaje
+                view_my_loans()
             elif(option == "4"):
                 print("Seccion de multas")
                 # aqui iria el codigo para ver las multas, pero por ahora solo es un mensaje
