@@ -22,7 +22,7 @@ def login():
     data = _load_users()
     for user in data["users"]:
         if user["email"] == email and user["password"] == password:
-            print(f"\Welcome, {user['name']} ({user['rol']})")
+            print(f"\nWelcome, {user['name']} ({user['rol']})")
             return user  
 
     print("\nEmail or password wrong.")
@@ -36,8 +36,11 @@ def register():
     email = name
     if rol == "student":
         email += "@alumnos.ucn.cl"
-    else:
+    elif rol == "library servant":
         email += "@ucn.cl"
+    else:
+        print("\nNot valid Rol")
+        return None
 
     password = input("Password: ").strip()
 
