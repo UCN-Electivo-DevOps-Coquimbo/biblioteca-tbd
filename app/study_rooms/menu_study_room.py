@@ -1,14 +1,14 @@
 from app.study_rooms import reserve_study_room, add_study_room, delete_study_room, edit_study_room
 
 def show_menu():
-    print("------MENU ADMINISTRADOR SALAS DE ESTUDIO-------")
-    print("Ingresa el número de la opción que deseas realizar:")
-    print("1. Reservar sala de estudio")
-    print("2. Agregar sala de estudio")
-    print("3. Editar sala de estudio")
-    print("4. Eliminar sala de estudio")
+    print("------STUDY ROOM ADMIN MENU-------")
+    print("Enter the number of the option you want to perform:")
+    print("1. Reserve study room")
+    print("2. Add study room")
+    print("3. Edit study room")
+    print("4. Delete study room")
     while True:
-        option = input("Opción: ")
+        option = input("Option: ")
         if option == "1":
             reserve_study_room()
         elif option == "2":
@@ -18,7 +18,7 @@ def show_menu():
         elif option == "4":
             delete_study_room()
         elif option == "0":
-            print("Saliendo del menú de salas de estudio.")
+            print("Exiting study room menu.")
             break
 
 if __name__ == "__main__":

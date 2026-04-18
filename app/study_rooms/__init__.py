@@ -1,4 +1,4 @@
-# Paquete de módulos de salas de estudio
+# Study room modules package
 from .reserve_study_room import reserve_study_room_flow as reserve_study_room
 from .add_study_room import add_study_room_flow as add_study_room
 from .delete_study_room import delete_study_room_flow as delete_study_room
