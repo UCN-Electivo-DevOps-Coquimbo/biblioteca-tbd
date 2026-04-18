@@ -1,26 +1,28 @@
+from auth import login, register
 import menu.index as menu_index
 import utils as biblioteca_utils
 
 def main():
-    print("Base biblioteca UCN")
-    opcion = ""
-    while(not biblioteca_utils.esOpcion(opcion, ["1", "2"], int)):
+    option = ""
+    while(not biblioteca_utils.itsOption(option, ["1", "2"], int)):
+        print("=== Library UCN ===")
+        print("1) Log in")      
+        print("2) Register")
+        print("3) Exit")
+        option = input("> ")
 
-        print("1) Iniciar sesion")      
-        print("2) Registrarse")
-        opcion = input("> ")
-
-    if(opcion == "1"):
-        print("Iniciar sesion")
-        # aqui iria el codigo para iniciar sesion, pero por ahora solo es un mensaje
-
-        menu_index.menu("alumno") # aqui se llama al menu del alumno, pero se puede cambiar a admin dependiendo del tipo de usuario
-
-
-    elif(opcion == "2"):
-        print("Registrarse")
-        # aqui iria el codigo para registrarse, pero por ahora solo es un mensaje
-
+    if(option == "1"):
+        user = login()
+        if user:
+            print(f"\n[Active account: {user['email']}]")
+            if user["rol"] == "student":
+                menu_index.menu("student") # aqui se llama al menu del alumno, pero se puede cambiar a admin dependiendo del tipo de usuario
+    elif(option == "2"):
+        register()
+    elif option == "3":
+        print("See you soon.")
+    else:
+        print("invalid option")
 
 
 

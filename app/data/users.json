@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Juan Pérez",
+      "email": "juan.perez@alumnos.ucn.cl",
+      "password": "juan123",
+      "rol": "student"
+    },
+    {
+      "id": 2,
+      "name": "María González",
+      "email": "maria.gonzalez@alumnos.ucn.cl",
+      "password": "maria456",
+      "rol": "student"
+    },
+    {
+      "id": 3,
+      "name": "Carlos Rodríguez",
+      "email": "carlos.rodriguez@ucn.cl",
+      "password": "admin789",
+      "rol": "student"
+    }
+  ]
+}
