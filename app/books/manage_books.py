@@ -108,13 +108,52 @@ def edit_book():
     save_books(books)
     print(f"\nBook '{book['title']}' updated successfully.")
 
+def delete_book():
+    books = get_books()
+    if not books:
+        print("\nNo books registered.")
+        return
+
+    list_books()
+    book_id = input("\nEnter the ID of the book to delete: ").strip()
+
+    if not book_id.isdigit():
+        print("Invalid ID.")
+        return
+
+    book = None
+    for b in books:
+        if b["id"] == int(book_id):
+            book = b
+            break
+    if not book:
+        print(f"No book found with ID {book_id}.")
+        return
+
+    print(f"\nBook to delete: [{book['id']}] {book['title']} - {book['author']}")
+
+    copies_in_use = book["total_copies"] - book["available_copies"]
+    if copies_in_use > 0:
+        print(f"Cannot delete: this book has {copies_in_use} copy(ies) currently on loan.")
+        return
+
+    confirm = input("Are you sure you want to delete this book and all its copies? (y/n): ").strip().lower()
+    if confirm != "y":
+        print("Deletion cancelled.")
+        return
+
+    books = [b for b in books if b["id"] != int(book_id)]
+    save_books(books)
+    print(f"\nBook '{book['title']}' deleted successfully.")
+
 def manage_books():
     while True:
         print("\nManage Books")
         print("1. View all books")
         print("2. Add book")
         print("3. Edit book")
-        print("4. Go back")
+        print("4. Delete book")
+        print("5. Go back")
         opcion = input("> ").strip()
 
         if opcion == "1":
@@ -124,6 +163,8 @@ def manage_books():
         elif opcion == "3":
             edit_book()
         elif opcion == "4":
+            delete_book()
+        elif opcion == "5":
             break
         else:
             print("Invalid option.")
