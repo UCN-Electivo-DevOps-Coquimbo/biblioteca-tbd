@@ -1,10 +1,10 @@
-def menu_multas():
+def debt_menu():
     while True:
-        print("\n=== Sección de Multas ===")
-        print("Indique que desea hacer:")
-        print("1. Ver multas")
-        print("2. Pagar multa")
-        print("3. Volver al menú principal")
+        print("\n=== Debt Section ===")
+        print("What do you want to do:")
+        print("1. View debt")
+        print("2. Pay off debts")
+        print("3. Return to main menu")
         opcion = input("> ")
         if opcion == "1":
             ver_multas()
@@ -13,14 +13,14 @@ def menu_multas():
         elif opcion == "3":
             break
         else:
-            print("Opción no válida, por favor ingrese una opción válida.")
+            print("Invalid option, please select a valid number.")
 
 def ver_multas(): 
-    print("Ver multas")
+    print("View debt")
     # placeholder hasta tener el codigo d visualizar multas del usuario
 
 
 def pagar_multa():
-    print("Pagar multa")
+    print("Pay off debts")
     # placeholder hasta tener el codigo para pagar las multas registradas del usuario
 

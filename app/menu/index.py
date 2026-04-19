@@ -1,9 +1,7 @@
 from books.manage_books import manage_books
 from loans.view_loans_user import view_my_loans
-
-
-
 from books.borrow_menu import borrow_return_menu
+from services.debt import debt_menu
 
 student_options = ["1", "2", "3", "4", "5"]
 admin_options = ["1", "2", "3", "4", "5"]
@@ -27,7 +25,7 @@ def menu(user_id, userType = "student"):
                 view_my_loans(user_id)
             elif(option == "4"):
                 print("Seccion de multas")
-                # aqui iria el codigo para ver las multas, pero por ahora solo es un mensaje
+                debt_menu()
             elif(option == "5"):
                 print("Salir")
                 break
