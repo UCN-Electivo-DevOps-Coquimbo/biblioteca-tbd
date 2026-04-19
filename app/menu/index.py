@@ -1,6 +1,8 @@
 from services.get_book import solicitar_prestamo_libro
 from books.manage_books import manage_books
 
+
+
 student_options = ["1", "2", "3", "4", "5"]
 admin_options = ["1", "2", "3", "4", "5"]
 def menu(userType = "student"):
@@ -16,13 +18,10 @@ def menu(userType = "student"):
         if(userType == "student"):
             if(option == "1"):
                 solicitar_prestamo_libro()
-
             elif(option == "2"):
-                print("Pedir sala de estudio")
-                # aqui iria el codigo para pedir una sala de estudio, pero por ahora solo es un mensaje
+                print("Pedir sala de estudio")   
             elif(option == "3"):
                 print("Ver prestamos")
-                # aqui iria el codigo para ver los prestamos, pero por ahora solo es un mensaje
             elif(option == "4"):
                 print("Seccion de multas")
                 # aqui iria el codigo para ver las multas, pero por ahora solo es un mensaje
@@ -35,7 +34,7 @@ def menu(userType = "student"):
             if(option == "1"):
                 manage_books()
             elif(option == "2"):
-                print("Gestionar Salas de estudio")
+                print("request as study room")
                 # aqui iria el codigo para gestionar las salas de estudio, pero por ahora solo es un mensaje
             elif(option == "3"):
                 print("Visualizar Prestamos")
