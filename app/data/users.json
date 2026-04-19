@@ -20,6 +20,13 @@
       "email": "carlos.rodriguez@ucn.cl",
       "password": "admin789",
       "rol": "student"
+    },
+    {
+      "id": 4,
+      "name": "tester",
+      "email": "tester@alumnos.ucn.cl",
+      "password": "test",
+      "rol": "student"
     }
   ]
 }
