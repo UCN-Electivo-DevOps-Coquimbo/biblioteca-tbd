@@ -1,3 +1,4 @@
+from singletons.user_session import UserSession
 from auth import login, register
 import menu.index as menu_index
 import utils as biblioteca_utils
@@ -15,6 +16,7 @@ def main():
         user = login()
         if user:
             print(f"\n[Active account: {user['email']}]")
+            user_session = UserSession()
             if user["rol"] == "student":
                 menu_index.menu("student") # aqui se llama al menu del alumno, pero se puede cambiar a admin dependiendo del tipo de usuario
     elif(option == "2"):
