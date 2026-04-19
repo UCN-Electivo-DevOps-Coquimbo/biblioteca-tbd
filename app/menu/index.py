@@ -4,7 +4,7 @@ from loans.view_loans_user import view_my_loans
 
 student_options = ["1", "2", "3", "4", "5"]
 admin_options = ["1", "2", "3", "4", "5"]
-def menu(userType = "student"):
+def menu(user_id, userType = "student"):
     option = ""
     if(userType == "student"):
         options = student_options
@@ -22,7 +22,7 @@ def menu(userType = "student"):
                 print("Pedir sala de estudio")
                 # aqui iria el codigo para pedir una sala de estudio, pero por ahora solo es un mensaje
             elif(option == "3"):
-                view_my_loans()
+                view_my_loans(user_id)
             elif(option == "4"):
                 print("Seccion de multas")
                 # aqui iria el codigo para ver las multas, pero por ahora solo es un mensaje

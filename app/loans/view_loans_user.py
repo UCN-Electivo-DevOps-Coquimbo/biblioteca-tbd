@@ -1,25 +1,20 @@
 import json
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH_LOANS = os.path.join(BASE_DIR, "data", "loans.json")
 DATA_PATH_BOOKS = os.path.join(BASE_DIR, "data", "book.json")
-DATA_PATH_USERS = os.path.join(BASE_DIR, "data", "users.json")
 
-#funcion para cargar los archivos
 def load_json_data(path):
-    #abre el archivo en modo lectura y convierte el json en lista
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-    
 
-def view_my_loans():
-    #carga los archivos
+def view_my_loans(user_id):
     loans = load_json_data(DATA_PATH_LOANS)
     books = load_json_data(DATA_PATH_BOOKS)
-    users_file  = load_json_data(DATA_PATH_USERS)
-    #entrar a la lista de ususarios
-    users_list = users_file.get("users", []) if users_file else []
+
+    books_dict = {b["id"]: b for b in books}
     
     if not loans:
         print("No hay préstamos registrados.")
@@ -29,17 +24,22 @@ def view_my_loans():
     print("       HISTÓRICO DE PRÉSTAMOS DETALLADO")
     print("="*50)
 
-    #recorrer cada prestamo del json loans 
+    has_loans = False
+
     for loan in loans:
-        #el next se usa para buscar dentro de la lista con el id book/usuario
-        libro = next((b for b in books if b["id"] == loan["book_id"]), None)
-        usuario = next((u for u in users_list if u["id"] == loan["user_id"]), None)
-        #si existe se coloca el nombre, de lo contrario no
-        titulo_libro = libro["title"] if libro else "Libro no encontrado"
-        autor_libro = libro["author"] if libro else "N/A"
-        nombre_usuario = usuario["name"] if usuario else "Usuario no encontrado"
-        
-        print(f"ID Préstamo: {loan['id']}")
-        print(f"Libro:    {titulo_libro} ({autor_libro})")
-        print(f"Usuario:  {nombre_usuario}")
-        print("-" * 50)
+        if (loan["user_id"] == user_id):
+            has_loans = True
+            book = books_dict.get(loan["book_id"])
+
+            book_title = book["title"] if book else "Libro no encontrado"
+            book_author = book["author"] if book else "N/A"
+            
+            print(f"ID Préstamo: {loan['id']}")
+            print(f"Libro:    {book_title} ({book_author})")
+            print(f"Fecha préstamo: {loan['loan_date']}")
+            print(f"Fecha devolución: {loan['return_date']}")
+            print("-" * 50)
+    
+    if (not has_loans):
+        print("Sin préstamos realizados.\n")
+    
