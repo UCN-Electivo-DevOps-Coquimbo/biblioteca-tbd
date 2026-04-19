@@ -1,7 +1,7 @@
 import json
 import os
 
-DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "libros.json")
+DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "book.json")
 
 def get_books():
     with open(DATA_PATH, "r", encoding="utf-8") as f:
@@ -47,12 +47,74 @@ def list_books():
     for b in books:
         print(f"[{b['id']}] Title: {b['title']}, Author: {b['author']}, Editorial: {b['editorial']}, Year: {b['year']}, Genre: {b['genre']}, Total Copies: {b['total_copies']}, Available Copies: {b['available_copies']}")
 
+def edit_book():
+    books = get_books()
+    if not books:
+        print("\nNo books registered.")
+        return
+
+    list_books()
+    book_id = input("\nEnter the ID of the book to edit: ").strip()
+
+    if not book_id.isdigit():
+        print("Invalid ID.")
+        return
+
+    book = None
+    for b in books:
+        if b["id"] == int(book_id):
+            book = b
+            break
+    if not book:
+        print(f"No book found with ID {book_id}.")
+        return
+
+    print(f"\nEditing book: [{book['id']}] {book['title']}")
+    print("(Press Enter to keep the current value)")
+
+    title = input(f"Title [{book['title']}]: ").strip()
+    author = input(f"Author [{book['author']}]: ").strip()
+    editorial = input(f"Editorial [{book['editorial']}]: ").strip()
+    year = input(f"Year [{book['year']}]: ").strip()
+    genre = input(f"Genre [{book['genre']}]: ").strip()
+    total_copies = input(f"Total Copies [{book['total_copies']}]: ").strip()
+
+    if title:
+        book["title"] = title
+    if author:
+        book["author"] = author
+    if editorial:
+        book["editorial"] = editorial
+    if year:
+        if not year.isdigit():
+            print("Invalid year. Changes to year were not saved.")
+        else:
+            book["year"] = int(year)
+    if genre:
+        book["genre"] = genre
+    if total_copies:
+        if not total_copies.isdigit():
+            print("Invalid number. Changes to total copies were not saved.")
+        else:
+            new_total = int(total_copies)
+            copies_in_use = book["total_copies"] - book["available_copies"]
+            new_available = new_total - copies_in_use
+            if new_available < 0:
+                print(f"Cannot reduce total copies to {new_total}. There are {copies_in_use} copies currently on loan.")
+            else:
+                book["total_copies"] = new_total
+                book["available_copies"] = new_available
+
+    save_books(books)
+    print(f"\nBook '{book['title']}' updated successfully.")
+
 def manage_books():
     while True:
         print("\nManage Books")
         print("1. View all books")
         print("2. Add book")
-        print("3. Go back")
+        print("3. Edit book")
+        print("4. Go back")
         opcion = input("> ").strip()
 
         if opcion == "1":
@@ -60,6 +122,8 @@ def manage_books():
         elif opcion == "2":
             create_book()
         elif opcion == "3":
+            edit_book()
+        elif opcion == "4":
             break
         else:
             print("Invalid option.")
