@@ -134,3 +134,53 @@ def delete_book():
     books = [b for b in books if b["id"] != int(book_id)]
     save_books(books)
     print(f"\nBook '{book['title']}' deleted successfully.")
+
+def borrow_book():
+    books = get_books()
+    if not books:
+        print("\nNo books registered.")
+        return
+
+    list_books()
+    book_id = input("\nEnter the ID of the book to borrow: ").strip()
+
+    if not book_id.isdigit():
+        print("Invalid ID.")
+        return
+
+    for book in books:
+        if book["id"] == int(book_id):
+            if book["available_copies"] > 0:
+                book["available_copies"] -= 1
+                save_books(books)
+                print(f"\nYou borrowed '{book['title']}' successfully.")
+            else:
+                print("\nNo copies available for this book.")
+            return
+
+    print("Book not found.")
+
+def return_book():
+    books = get_books()
+    if not books:
+        print("\nNo books registered.")
+        return
+
+    list_books()
+    book_id = input("\nEnter the ID of the book to return: ").strip()
+
+    if not book_id.isdigit():
+        print("Invalid ID.")
+        return
+
+    for book in books:
+        if book["id"] == int(book_id):
+            if book["available_copies"] < book["total_copies"]:
+                book["available_copies"] += 1
+                save_books(books)
+                print(f"\nYou returned '{book['title']}' successfully.")
+            else:
+                print("\nAll copies are already in the library.")
+            return
+
+    print("Book not found.")
