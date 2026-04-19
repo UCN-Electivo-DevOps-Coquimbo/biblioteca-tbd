@@ -12,13 +12,13 @@ def save_books(books):
         json.dump(books, f, ensure_ascii=False, indent=2)
 
 def create_book():
-    print("\nCrear Libro")
-    title = input("Título: ").strip()
-    author = input("Autor: ").strip()
+    print("\nCreate Book")
+    title = input("Title: ").strip()
+    author = input("Author: ").strip()
     editorial = input("Editorial: ").strip()
-    year = input("Año: ").strip()
-    genre = input("Género: ").strip()
-    total_copies = input("Copias Totales: ").strip()
+    year = input("Year: ").strip()
+    genre = input("Genre: ").strip()
+    total_copies = input("Total Copies: ").strip()
 
     books = get_books()
     new_id = max((b["id"] for b in books), default=0) + 1
@@ -36,23 +36,23 @@ def create_book():
 
     books.append(new_book)
     save_books(books)
-    print(f"\nEl libro '{title}' se agregó correctamente.")
+    print(f"\nThe book '{title}' was added successfully.")
 
 def list_books():
     books = get_books()
     if not books:
-        print("\nNo hay libros registrados.")
+        print("\nNo books registered.")
         return
-    print("\nLibros disponibles")
+    print("\nAvailable books")
     for b in books:
-        print(f"[{b['id']}] Título: {b['title']}, Autor: {b['author']}, Editorial: {b['editorial']}, Año: {b['year']}, Género: {b['genre']}, Copias Totales: {b['total_copies']}, Copias Disponibles: {b['available_copies']}")
+        print(f"[{b['id']}] Title: {b['title']}, Author: {b['author']}, Editorial: {b['editorial']}, Year: {b['year']}, Genre: {b['genre']}, Total Copies: {b['total_copies']}, Available Copies: {b['available_copies']}")
 
 def manage_books():
     while True:
-        print("\nGestionar Libros")
-        print("1. Ver todos los libros")
-        print("2. Agregar libro")
-        print("3. Volver")
+        print("\nManage Books")
+        print("1. View all books")
+        print("2. Add book")
+        print("3. Go back")
         opcion = input("> ").strip()
 
         if opcion == "1":
@@ -62,4 +62,4 @@ def manage_books():
         elif opcion == "3":
             break
         else:
-            print("Opción no válida.")
+            print("Invalid option.")
