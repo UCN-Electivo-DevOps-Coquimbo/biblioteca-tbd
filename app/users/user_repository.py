@@ -1,0 +1,12 @@
+import json
+import os
+
+DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "users.json")
+
+def get_users():
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_users(users):
+    with open(DATA_PATH, "w", encoding="utf-8") as f:
+        json.dump(users, f, ensure_ascii=False, indent=2)
