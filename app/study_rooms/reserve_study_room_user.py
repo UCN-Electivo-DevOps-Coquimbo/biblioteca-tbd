@@ -28,9 +28,14 @@ def reserve_study_room_flow():
     print("Which study room do you want to reserve?")
     print("------------ROOMS--------------")
     for study_room in json.load(open(JSON_FILE, 'r')):
-        
-        print(f"ID: {study_room['id']}, Name: {study_room['name']}, Capacity: {study_room['capacity']}, Available: {translate_availability(study_room['available'])}")
-        study_rooms[study_room['id']] = study_room
+        if study_room['available'] == True:
+            print(f"ID: {study_room['id']}, Name: {study_room['name']}, Capacity: {study_room['capacity']}, Available: {translate_availability(study_room['available'])}")
+            study_rooms[study_room['id']] = study_room
+
+    if not study_rooms:
+        print("No rooms to cancel.")
+        return
+    
     while True:
         study_room_id_input = input("Enter the room ID: ")
         if not study_room_id_input:
