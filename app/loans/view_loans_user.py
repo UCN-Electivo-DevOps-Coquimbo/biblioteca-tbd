@@ -17,11 +17,11 @@ def view_my_loans(user_id):
     books_dict = {b["id"]: b for b in books}
     
     if not loans:
-        print("No hay préstamos registrados.")
+        print("No loan records found.")
         return
 
     print("\n" + "="*50)
-    print("       HISTÓRICO DE PRÉSTAMOS DETALLADO")
+    print("       'DETAILED LOAN HISTORY'")
     print("="*50)
 
     has_loans = False
@@ -31,15 +31,15 @@ def view_my_loans(user_id):
             has_loans = True
             book = books_dict.get(loan["book_id"])
 
-            book_title = book["title"] if book else "Libro no encontrado"
+            book_title = book["title"] if book else "Book not found"
             book_author = book["author"] if book else "N/A"
             
-            print(f"ID Préstamo: {loan['id']}")
-            print(f"Libro:    {book_title} ({book_author})")
-            print(f"Fecha préstamo: {loan['loan_date']}")
-            print(f"Fecha devolución: {loan['return_date']}")
+            print(f"Loan ID: {loan['id']}")
+            print(f"Book:    {book_title} ({book_author})")
+            print(f"Issue Date: {loan['loan_date']}")
+            print(f"Due Date: {loan['return_date']}")
             print("-" * 50)
     
     if (not has_loans):
-        print("Sin préstamos realizados.\n")
+        print("No loans recorded for this user.\n")
     
