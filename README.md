@@ -14,7 +14,7 @@ Funcionalidades
 + Seccion de multas -> Ema
 
 ## Admin
-+ Creacion / eliminacion libros -> Vichy
++ Creacion / eliminacion libros -> María Victoria Quiroga y Constanza Vázquez
 + Gestor de sala de estudios -> Cuello
 + Visualizar prestamos -> Nico
 + Gestor usuarios -> Ian
