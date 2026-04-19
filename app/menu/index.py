@@ -1,5 +1,8 @@
 from books.manage_books import manage_books
 from loans.view_loans_user import view_my_loans
+
+
+
 from books.borrow_menu import borrow_return_menu
 
 student_options = ["1", "2", "3", "4", "5"]
@@ -19,8 +22,7 @@ def menu(user_id, userType = "student"):
                 borrow_return_menu()
 
             elif(option == "2"):
-                print("Pedir sala de estudio")
-                # aqui iria el codigo para pedir una sala de estudio, pero por ahora solo es un mensaje
+                print("Pedir sala de estudio")   
             elif(option == "3"):
                 view_my_loans(user_id)
             elif(option == "4"):
@@ -35,7 +37,7 @@ def menu(user_id, userType = "student"):
             if(option == "1"):
                 manage_books()
             elif(option == "2"):
-                print("Gestionar Salas de estudio")
+                print("request as study room")
                 # aqui iria el codigo para gestionar las salas de estudio, pero por ahora solo es un mensaje
             elif(option == "3"):
                 print("Visualizar Prestamos")
