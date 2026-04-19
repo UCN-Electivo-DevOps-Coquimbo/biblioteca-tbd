@@ -1,20 +1,20 @@
-from services.get_book import solicitar_prestamo_libro
-
-opciones_alumno = ["1", "2", "3", "4", "5"]
-opciones_admin = ["1", "2", "3", "4", "5"]
-def menu(userType = "alumno"):
-    opcion = ""
-    if(userType == "alumno"):
-        opciones = opciones_alumno
+from books.manage_books import manage_books
+from books.borrow_menu import borrow_return_menu
+student_options = ["1", "2", "3", "4", "5"]
+admin_options = ["1", "2", "3", "4", "5"]
+def menu(userType = "student"):
+    option = ""
+    if(userType == "student"):
+        options = student_options
     else:
         opciones = opciones_admin
 
     while(True):
         printMenu(userType)
-        opcion = input("> ")
-        if(userType == "alumno"):
-            if(opcion == "1"):
-                solicitar_prestamo_libro()
+        option = input("> ")
+        if(userType == "student"):
+            if(option == "1"):
+                borrow_return_menu()
 
             elif(opcion == "2"):
                 print("Pedir sala de estudio")
