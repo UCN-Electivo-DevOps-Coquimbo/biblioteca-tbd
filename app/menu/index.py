@@ -19,7 +19,7 @@ def menu(user_id, userType = "student"):
         option = input("> ")
         if(userType == "student"):
             if(option == "1"):
-                borrow_return_menu()
+                borrow_return_menu(user_id)
 
             elif(option == "2"):
                 print("Request a study room")
