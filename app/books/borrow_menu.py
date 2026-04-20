@@ -1,4 +1,4 @@
-def borrow_return_menu():
+def borrow_return_menu(user_id=None):
     from books.book_actions import borrow_book, return_book
 
     while True:
@@ -10,9 +10,9 @@ def borrow_return_menu():
         option = input("Choose an option: ").strip()
 
         if option == "1":
-            borrow_book()
+            borrow_book(user_id)
         elif option == "2":
-            return_book()
+            return_book(user_id)
         elif option == "3":
             break
         else:
