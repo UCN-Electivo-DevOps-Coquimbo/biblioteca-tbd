@@ -10,7 +10,7 @@
     "id": 2,
     "name": "Room 102",
     "capacity": 8,
-    "available": false,
-    "user_id": 1
+    "available": true,
+    "user_id": null
   }
 ]

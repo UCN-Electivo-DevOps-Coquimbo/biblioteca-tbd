@@ -1,4 +1,4 @@
-from app.study_rooms import reserve_study_room_user, cancel_study_room_user
+from study_rooms import reserve_study_room_user, cancel_study_room_user
 
 def show_menu(user_id):
     while True:
