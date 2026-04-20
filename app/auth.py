@@ -1,6 +1,8 @@
 import json
 import os
 
+from singletons.user_session import UserSession
+
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "users.json")
 
 
@@ -22,8 +24,25 @@ def login():
     data = _load_users()
     for user in data["users"]:
         if user["email"] == email and user["password"] == password:
+
             print(f"\nWelcome, {user['name']} ({user['rol']})")
-            return user  
+            
+            # Reset session before creating new one
+            try:
+                session = UserSession()
+                session.logout()
+            except:
+                pass
+            
+            # Now initialize with new user data
+            session = UserSession(
+                id=user['id'],
+                name=user['name'],
+                email=user['email'],
+                password=user['password'],
+                rol=user['rol']
+            )
+            return user
 
     print("\nEmail or password wrong.")
     return None
