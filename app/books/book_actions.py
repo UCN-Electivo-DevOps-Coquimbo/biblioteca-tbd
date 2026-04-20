@@ -1,4 +1,69 @@
+import json
+from datetime import date, timedelta
+
 from books.book_repository import get_books, save_books
+from utils import DATA_PATH_LOANS
+
+
+def _load_loans_data():
+    with open(DATA_PATH_LOANS, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    if isinstance(data, dict):
+        loans = data.get("loans", [])
+        if not isinstance(loans, list):
+            data["loans"] = []
+            loans = data["loans"]
+        return data, loans
+
+    if isinstance(data, list):
+        return data, data
+
+    return {"loans": []}, []
+
+
+def _save_loans_data(data):
+    with open(DATA_PATH_LOANS, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def _register_loan(book_id, user_id):
+    data, loans = _load_loans_data()
+    next_id = max((loan.get("id", 0) for loan in loans if isinstance(loan, dict)), default=0) + 1
+
+    loan_date = date.today()
+    return_date = loan_date + timedelta(days=14)
+
+    new_loan = {
+        "id": next_id,
+        "book_id": book_id,
+        "user_id": user_id,
+        "loan_date": loan_date.strftime("%d-%m-%Y"),
+        "return_date": return_date.strftime("%d-%m-%Y"),
+        "debt": False,
+    }
+
+    loans.append(new_loan)
+    _save_loans_data(data)
+
+
+def _remove_loan_on_return(book_id, user_id):
+    data, loans = _load_loans_data()
+
+    for i in range(len(loans) - 1, -1, -1):
+        loan = loans[i]
+        if not isinstance(loan, dict):
+            continue
+        if loan.get("book_id") != book_id:
+            continue
+        if loan.get("user_id") != user_id:
+            continue
+
+        loans.pop(i)
+        _save_loans_data(data)
+        return True
+
+    return False
 
 def create_book():
     print("\nCreate Book")
@@ -135,7 +200,7 @@ def delete_book():
     save_books(books)
     print(f"\nBook '{book['title']}' deleted successfully.")
 
-def borrow_book():
+def borrow_book(user_id=None):
     books = get_books()
     if not books:
         print("\nNo books registered.")
@@ -153,6 +218,8 @@ def borrow_book():
             if book["available_copies"] > 0:
                 book["available_copies"] -= 1
                 save_books(books)
+                if user_id is not None:
+                    _register_loan(book["id"], user_id)
                 print(f"\nYou borrowed '{book['title']}' successfully.")
             else:
                 print("\nNo copies available for this book.")
@@ -160,7 +227,7 @@ def borrow_book():
 
     print("Book not found.")
 
-def return_book():
+def return_book(user_id=None):
     books = get_books()
     if not books:
         print("\nNo books registered.")
@@ -178,6 +245,8 @@ def return_book():
             if book["available_copies"] < book["total_copies"]:
                 book["available_copies"] += 1
                 save_books(books)
+                if user_id is not None:
+                    _remove_loan_on_return(book["id"], user_id)
                 print(f"\nYou returned '{book['title']}' successfully.")
             else:
                 print("\nAll copies are already in the library.")
