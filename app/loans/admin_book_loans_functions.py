@@ -16,7 +16,6 @@ def load_loans():
     return []
 
 
-# esta funcion tiene sólo utilidad estética, no funcional
 def get_column_widths(loans, users_dict, books_dict):
     widths = {
         'loan_id': len('Loan ID'),
@@ -93,11 +92,6 @@ def print_loans(loans, users_dict, books_dict):
         print(f"{loan['id']:<{widths['loan_id']}} | {loan['user_id']:<{widths['user_id']}} | {user_name:<{widths['user']}} | {book_title:<{widths['book']}} | {loan['loan_date']:<{widths['loan_date']}} | {loan['return_date']:<{widths['return_date']}}")
 
     print(separator)
-
-
-def get_user_id_by_name(name, users_by_name):
-    name = name.strip().lower()
-    return users_by_name.get(name)
 
 
 def search_loans_by_user_name(user_name, loans, books_dict, users_dict):
