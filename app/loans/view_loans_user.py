@@ -1,18 +1,11 @@
-import json
-import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH_LOANS = os.path.join(BASE_DIR, "data", "loans.json")
-DATA_PATH_BOOKS = os.path.join(BASE_DIR, "data", "book.json")
-
-def load_json_data(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+import utils as biblioteca_utils
+from utils import DATA_PATH_LOANS, DATA_PATH_BOOKS
 
 
 def view_my_loans(user_id):
-    loans = load_json_data(DATA_PATH_LOANS)
-    books = load_json_data(DATA_PATH_BOOKS)
+    loans_data = biblioteca_utils.load_json_data(DATA_PATH_LOANS)
+    loans = loans_data.get("loans", []) if isinstance(loans_data, dict) else loans_data
+    books = biblioteca_utils.load_json_data(DATA_PATH_BOOKS)
 
     books_dict = {b["id"]: b for b in books}
     
@@ -36,8 +29,8 @@ def view_my_loans(user_id):
             
             print(f"Loan ID: {loan['id']}")
             print(f"Book:    {book_title} ({book_author})")
-            print(f"Issue Date: {loan['loan_date']}")
-            print(f"Due Date: {loan['return_date']}")
+            print(f"Loan Date: {loan['loan_date']}")
+            print(f"Return Date: {loan['return_date']}")
             print("-" * 50)
     
     if (not has_loans):
