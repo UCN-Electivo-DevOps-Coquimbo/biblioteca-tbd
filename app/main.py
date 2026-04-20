@@ -17,6 +17,8 @@ def main():
             print(f"\n[Active account: {user['email']}]")
             if user["rol"] == "student":
                 menu_index.menu(user["id"], "student") # aqui se llama al menu del alumno, pero se puede cambiar a admin dependiendo del tipo de usuario
+            else:
+                menu_index.menu(user["id"], "admin")
     elif(option == "2"):
         register()
     elif option == "3":

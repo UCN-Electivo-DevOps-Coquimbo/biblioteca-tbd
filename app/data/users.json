@@ -19,13 +19,27 @@
       "name": "Carlos Rodríguez",
       "email": "carlos.rodriguez@ucn.cl",
       "password": "admin789",
-      "rol": "student"
+      "rol": "admin"
     },
     {
       "id": 4,
       "name": "tester",
       "email": "tester@alumnos.ucn.cl",
       "password": "test",
+      "rol": "student"
+    },
+    {
+      "id": 5,
+      "name": "admin_tester",
+      "email": "admin@admin.com",
+      "password": "admin123",
+      "rol": "admin"
+    },
+    {
+      "id": 6,
+      "name": "Juan Soto",
+      "email": "juan.soto@alumnos.ucn.cl",
+      "password": "juan456",
       "rol": "student"
     }
   ]

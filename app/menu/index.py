@@ -1,5 +1,6 @@
 from books.manage_books import manage_books
 from loans.view_loans_user import view_my_loans
+from loans.admin_book_loans_menus import admin_book_loans_menu
 
 
 
@@ -33,6 +34,7 @@ def menu(user_id, userType = "student"):
                 break
             else:
                 print("Opcion no valida, por favor ingrese una opcion valida")
+        #admin
         else:
             if(option == "1"):
                 manage_books()
@@ -40,8 +42,7 @@ def menu(user_id, userType = "student"):
                 print("request as study room")
                 # aqui iria el codigo para gestionar las salas de estudio, pero por ahora solo es un mensaje
             elif(option == "3"):
-                print("Visualizar Prestamos")
-                # aqui iria el codigo para visualizar los prestamos, pero por ahora solo es un mensaje
+                admin_book_loans_menu()
             elif(option == "4"):
                 print("Gestionar Usuarios")
                 # aqui iria el codigo para gestionar los usuarios, pero por ahora solo es un mensaje
