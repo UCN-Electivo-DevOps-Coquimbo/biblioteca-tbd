@@ -1,4 +1,4 @@
-from app.study_rooms import reserve_study_room, add_study_room, delete_study_room, edit_study_room
+from study_rooms import reserve_study_room, add_study_room, delete_study_room, edit_study_room
 
 def show_menu():
     print("------STUDY ROOM ADMIN MENU-------")

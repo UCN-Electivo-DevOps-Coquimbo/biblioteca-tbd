@@ -9,12 +9,29 @@ DATA_PATH_BOOKS = os.path.join(BASE_DIR, "data", "book.json")
 
 def load_loans():
     with open(DATA_PATH_LOANS, "r", encoding="utf-8") as f:
-        return json.load(f)
+        data = json.load(f)
+
+    if isinstance(data, dict):
+        loans = data.get("loans", [])
+        return loans if isinstance(loans, list) else []
+
+    if isinstance(data, list):
+        return data
+
+    return []
 
 
 def save_loans(loans):
+    data_to_save = loans
+    if os.path.exists(DATA_PATH_LOANS):
+        with open(DATA_PATH_LOANS, "r", encoding="utf-8") as f:
+            current_data = json.load(f)
+        if isinstance(current_data, dict):
+            current_data["loans"] = loans
+            data_to_save = current_data
+
     with open(DATA_PATH_LOANS, "w", encoding="utf-8") as f:
-        json.dump(loans, f, ensure_ascii=False, indent=2)
+        json.dump(data_to_save, f, ensure_ascii=False, indent=2)
 
 
 def load_books():

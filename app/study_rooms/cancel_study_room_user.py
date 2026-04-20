@@ -11,7 +11,7 @@ def translate_availability(available):
     return "Yes" if available else "No"
 
 
-def cancel_study_room_user(study_room_id):
+def cancel_study_room_user(study_room_id, user_id):
     with open(JSON_FILE, 'r') as file:
         study_rooms = json.load(file)
 
@@ -21,7 +21,10 @@ def cancel_study_room_user(study_room_id):
             room_found = True
             if study_room.get('available', True):
                 return "Room is already available"
+            if study_room.get('user_id') != user_id:
+                return "You can only cancel your own reservation"
             study_room['available'] = True
+            study_room['user_id'] = None
             break
 
     if not room_found:
@@ -33,17 +36,20 @@ def cancel_study_room_user(study_room_id):
     return "Study room canceled successfully"
 
 
-def cancel_study_room_flow():
+def cancel_study_room_flow(user_id):
     study_rooms = {}
     print("Which study room do you want to cancel?")
     print("------------ROOMS--------------")
-    for study_room in json.load(open(JSON_FILE, 'r')):
-        if study_room['available'] == False:
+    with open(JSON_FILE, 'r') as file:
+        all_study_rooms = json.load(file)
+
+    for study_room in all_study_rooms:
+        if study_room['available'] == False and study_room.get('user_id') == user_id:
             print(f"ID: {study_room['id']}, Name: {study_room['name']}, Capacity: {study_room['capacity']}, Available: {translate_availability(study_room['available'])}")
             study_rooms[study_room['id']] = study_room
 
     if not study_rooms:
-        print("No rooms to cancel.")
+        print("You have no rooms to cancel.")
         return
     
     while True:
@@ -61,5 +67,5 @@ def cancel_study_room_flow():
             continue
         break
 
-    result = cancel_study_room_user(study_room_id)
+    result = cancel_study_room_user(study_room_id, user_id)
     print(result)

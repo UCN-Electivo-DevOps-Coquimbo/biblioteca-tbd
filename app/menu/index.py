@@ -1,5 +1,7 @@
+from study_rooms import menu_study_room_user
 from books.manage_books import manage_books
 from loans.view_loans_user import view_my_loans
+from loans.admin_book_loans_menus import admin_book_loans_menu
 from books.borrow_menu import borrow_return_menu
 from services.debt import debt_menu
 
@@ -20,7 +22,9 @@ def menu(user_id, userType = "student"):
                 borrow_return_menu()
 
             elif(option == "2"):
-                print("Request study room")   
+                print("Request a study room")
+                menu_study_room_user.show_menu(user_id)
+
             elif(option == "3"):
                 view_my_loans(user_id)
             elif(option == "4"):
@@ -40,6 +44,7 @@ def menu(user_id, userType = "student"):
             elif(option == "3"):
                 print("View Loans")
                 # aqui iria el codigo para visualizar los prestamos, pero por ahora solo es un mensaje
+                admin_book_loans_menu()
             elif(option == "4"):
                 print("Manage Users")
                 # aqui iria el codigo para gestionar los usuarios, pero por ahora solo es un mensaje

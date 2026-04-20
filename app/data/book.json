@@ -38,5 +38,25 @@
     "genre": "Teatro",
     "total_copies": 1,
     "available_copies": 1
+  },
+  {
+    "id": 5,
+    "title": "1984",
+    "author": "George Orwell",
+    "editorial": "DEBOLSILLO",
+    "year": 1949,
+    "genre": "Distopía",
+    "total_copies": 3,
+    "available_copies": 2
+  },
+  {
+    "id": 6,
+    "title": "Cien años de felicidad",
+    "author": "Bad Bunny",
+    "editorial": "Planeta",
+    "year": 2050,
+    "genre": "Comedia",
+    "total_copies": 1,
+    "available_copies": 1
   }
 ]
