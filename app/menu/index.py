@@ -1,3 +1,4 @@
+from app.study_rooms import menu_study_room_user
 from books.manage_books import manage_books
 from loans.view_loans_user import view_my_loans
 
@@ -22,7 +23,9 @@ def menu(user_id, userType = "student"):
                 borrow_return_menu()
 
             elif(option == "2"):
-                print("Pedir sala de estudio")   
+                print("Pedir sala de estudio")
+                menu_study_room_user.show_menu(user_id)
+
             elif(option == "3"):
                 view_my_loans(user_id)
             elif(option == "4"):
